@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerControls : MonoBehaviour
@@ -9,20 +10,35 @@ public class PlayerControls : MonoBehaviour
 
     public float m_speed = 1;
 
+    public Text score;
+
+    public Rigidbody rb;
+
+    public bool started;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        score.text = "0";
+    }
     void Update ()
     {
-        transform.position += transform.forward * m_speed * Time.deltaTime;
+        rb.AddForce(transform.forward * m_speed * 100);
 
         if (Input.GetKey(m_left))
         {
-            transform.position -= transform.right * Time.deltaTime;
+            rb.AddTorque(transform.up * -Time.deltaTime * 1000);
         }
 
-        if (Input.GetKeyDown(m_right))
+        if (Input.GetKey(m_right))
         {
-            transform.position += transform.right * Time.deltaTime;
+            rb.AddTorque(transform.up * +Time.deltaTime * 1000);
         }
 
-        m_speed += Time.deltaTime * 0.1f;
+        score.text = ((int)Vector3.Distance(Vector3.zero, transform.position)).ToString() ;
+        m_speed += Time.deltaTime * 0.01f;
+
+        if (rb.velocity.)
+
+        print(rb.velocity);
 	}
 }
