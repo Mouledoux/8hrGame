@@ -13,7 +13,9 @@ public class PlayerControls : MonoBehaviour
     public Text score;
     public AudioSource crash;
 
-    public Rigidbody rb;
+    public UnityEngine.Events.UnityEvent OnDeath;
+
+    Rigidbody rb;
 
     float looseTimer, looseDelay;
     void Start()
@@ -25,16 +27,16 @@ public class PlayerControls : MonoBehaviour
 
     void Update ()
     {
-        rb.AddForce(transform.forward * m_speed * 100);
+        rb.AddForce(transform.forward * m_speed * 100 * Time.deltaTime);
 
         if (Input.GetKey(m_left))
         {
-            rb.AddTorque(transform.up * -Time.deltaTime * 1000 * m_speed);
+            rb.AddTorque(transform.up * -Time.deltaTime * 1000 * m_speed * Time.deltaTime);
         }
 
         if (Input.GetKey(m_right))
         {
-            rb.AddTorque(transform.up * +Time.deltaTime * 1000 * m_speed);
+            rb.AddTorque(transform.up * +Time.deltaTime * 1000 * m_speed * Time.deltaTime);
         }
 
         score.text = ((int)Vector3.Distance(Vector3.zero, transform.position)).ToString() ;
@@ -52,6 +54,7 @@ public class PlayerControls : MonoBehaviour
 
         if (looseTimer > looseDelay)
         {
+            OnDeath.Invoke();
             print("What a looser");
         }
 
