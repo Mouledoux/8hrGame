@@ -9,7 +9,7 @@ public class UI : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1f;
-        AudioListener.volume = Time.timeScale;
+        AudioListener.volume = AudioListener.volume * Time.timeScale;
     }
 
     private void Update()
@@ -20,7 +20,7 @@ public class UI : MonoBehaviour
             {
                 pauseMenu.SetActive(!pauseMenu.activeSelf);
                 Time.timeScale = pauseMenu.activeSelf ? 0f : 1f;
-                AudioListener.volume = Time.timeScale;
+                AudioListener.volume = AudioListener.volume * Time.timeScale;
             }
         }
     }
