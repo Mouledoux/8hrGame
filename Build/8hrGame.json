@@ -1,0 +1,11 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "8hrGame.data.unityweb",
+"asmCodeUrl": "8hrGame.asm.code.unityweb",
+"asmMemoryUrl": "8hrGame.asm.memory.unityweb",
+"asmFrameworkUrl": "8hrGame.asm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}
